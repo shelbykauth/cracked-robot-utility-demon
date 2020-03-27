@@ -1,0 +1,30 @@
+{
+  "name": "cracked-robot-utility-demon",
+  "version": "0.0.1",
+  "description": "Example CRUD app, with PostgreSQL and Sequelize, Node.js backend, Vue frontend",
+  "main": "index.js",
+  "scripts": {
+    "web-serve": "npm run serve --prefix Web",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shelbykauth/cracked-robot-utility-demon.git"
+  },
+  "keywords": [
+    "CRUD",
+    "PostgreSQL",
+    "Sequilize",
+    "Vue"
+  ],
+  "author": "Shelby Kauth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shelbykauth/cracked-robot-utility-demon/issues"
+  },
+  "homepage": "https://github.com/shelbykauth/cracked-robot-utility-demon#readme",
+  "devDependencies": {
+    "husky": "^4.2.3",
+    "prettier": "^2.0.2"
+  }
+}
