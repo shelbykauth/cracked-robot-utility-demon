@@ -1,0 +1,3 @@
+{
+  "dockerVolumeLocation": "$HOME/docker/volumes/postgres"
+}

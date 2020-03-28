@@ -5,6 +5,10 @@
   "main": "index.js",
   "scripts": {
     "web-serve": "npm run serve --prefix Web",
+    "database-test": "npm run test --prefix Database",
+    "database-install": "npm install --prefix Database",
+    "web-install": "npm install --prefix Web",
+    "api-install": "npm install --prefix API",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

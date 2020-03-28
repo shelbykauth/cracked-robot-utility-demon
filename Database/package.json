@@ -1,0 +1,8 @@
+{
+  "name": "cracked-robot-utility-demon-database",
+  "scripts": {
+    "test": "node setup/test.js",
+    "initialize": "",
+    "run-temp": "docker run --rm --name postgres-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres"
+  }
+}
