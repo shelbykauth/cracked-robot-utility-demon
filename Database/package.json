@@ -1,8 +1,22 @@
 {
   "name": "cracked-robot-utility-demon-database",
+  "version": "0.0.1",
+  "description": "",
   "scripts": {
     "test": "node setup/test.js",
     "initialize": "node setup/initialize.js",
     "start": "node setup/index.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shelbykauth/cracked-robot-utility-demon.git"
+  },
+  "keywords": [
+    "CRUD",
+    "REST",
+    "API",
+    "Example"
+  ],
+  "author": "Shelby Kauth",
+  "license": "ISC"
 }
