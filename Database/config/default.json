@@ -1,3 +1,16 @@
 {
-  "dockerVolumeLocation": "$HOME/docker/volumes/postgres"
+  "postgres": {
+    "version": "12"
+  },
+  "docker": {
+    "volumeLocation": "~/.docker/volumes/crud-postgres",
+    "removeAfter": true,
+    "containerName": "crud-postgres",
+    "dbUsername": "postgres",
+    "dbPassword": "1234567qwertyuiop",
+    "databaseName": "example",
+    "port": "5432",
+    "detachProcess": true
+  },
+  "something": "else"
 }
