@@ -1,7 +1,7 @@
 process.env.NODE_CONFIG_DIR = "../config";
 
 const config = require("config");
-const Common = require("../../Common");
+const Common = require("../../Common/src");
 const child_process = require("child_process");
 const util = require("util");
 const fs = require("fs");
