@@ -1,5 +1,6 @@
 {
   "postgres_database": {
+    "host": "localhost",
     "version": "12",
     "volume_location": "~/.docker/volumes/crud-postgres",
     "remove_after": true,
