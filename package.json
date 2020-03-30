@@ -6,6 +6,8 @@
   "scripts": {
     "web-serve": "npm run serve --prefix Web",
     "database-test": "npm run test --prefix Database",
+    "database-initialize": "npm run initialize --prefix Database",
+    "database-start": "npm start --prefix Database",
     "database-install": "npm install --prefix Database",
     "web-install": "npm install --prefix Web",
     "api-install": "npm install --prefix API",
@@ -30,5 +32,8 @@
   "devDependencies": {
     "husky": "^4.2.3",
     "prettier": "^2.0.2"
+  },
+  "dependencies": {
+    "config": "^3.3.1"
   }
 }
