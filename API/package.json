@@ -1,0 +1,26 @@
+{
+  "name": "cracked-robot-utility-demon-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shelbykauth/cracked-robot-utility-demon.git"
+  },
+  "keywords": [
+    "CRUD",
+    "REST",
+    "API",
+    "Example"
+  ],
+  "author": "Shelby Kauth",
+  "license": "ISC"
+}
