@@ -10,5 +10,17 @@
     "database_name": "example",
     "port": "5432",
     "detach_process": true
+  },
+  "api_endpoints": {
+    "host": "localhost",
+    "port": "8080",
+    "sub_directory": "/crud/api/",
+    "base_url": "http://localhost:8080/crud/api"
+  },
+  "web_endpoints": {
+    "host": "localhost",
+    "port": "80",
+    "sub_directory": "/crud/app/",
+    "base_url": "http://localhost:80/crud/app"
   }
 }
