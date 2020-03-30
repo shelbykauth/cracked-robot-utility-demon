@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test": "node setup/test.js",
-    "initialize": "node setup/initialize.js",
-    "start": "node setup/index.js"
+    "test": "node src/test.js",
+    "initialize": "node src/initialize.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
