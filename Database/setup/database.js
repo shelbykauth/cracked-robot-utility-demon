@@ -1,3 +1,5 @@
+process.env.NODE_CONFIG_DIR = "../config";
+
 const config = require("config");
 const child_process = require("child_process");
 const util = require("util");
@@ -19,6 +21,11 @@ async function test() {
   } else {
     console.log(`Config does not have 'something'.`);
   }
+  if (config.has("external")) {
+    console.log(`Config.external: ${config.get("external")}`);
+  } else {
+    console.log(`Config does not have 'external'.`);
+  }
 }
 
 function validate() {
@@ -26,15 +33,15 @@ function validate() {
 
   // Has All Required Configs //
   let requiredConfigs = [
-    "postgres.version",
-    "docker.volumeLocation",
-    "docker.removeAfter",
-    "docker.containerName",
-    "docker.dbUsername",
-    "docker.dbPassword",
-    "docker.databaseName",
-    "docker.port",
-    "docker.detachProcess"
+    "postgres_database.version",
+    "postgres_database.volume_location",
+    "postgres_database.remove_after",
+    "postgres_database.container_name",
+    "postgres_database.username",
+    "postgres_database.password",
+    "postgres_database.database_name",
+    "postgres_database.port",
+    "postgres_database.detach_process"
   ];
   requiredConfigs.forEach(function (key) {
     if (!config.has(key)) {
@@ -50,11 +57,11 @@ function validate() {
     process.exit(1);
   }
 
-  let volumeLocation = config.get("docker.volumeLocation");
-  if (fs.existsSync(volumeLocation)) {
+  let volume_location = config.get("postgres_database.volume_location");
+  if (fs.existsSync(volume_location)) {
   } else {
     console.log(
-      `Config.docker.volumeLocation is not valid.  Please correct in .../config/local.json.  Directory ${volumeLocation} does not exist`
+      `Config.postgres_database.volume_location is not valid.  Please correct in .../config/local.json.  Directory ${volume_location} does not exist`
     );
     hasProblem = true;
   }
@@ -67,7 +74,8 @@ function validate() {
 
 async function pullImage() {
   console.log(` == Pulling Container Image == `);
-  let command = `docker pull postgres:${config.get("postgres.version")}`;
+  let version = config.get("postgres_database.version");
+  let command = `docker pull postgres:${version}`;
   console.log(command);
 
   let { stdout, stderr } = await exec(command);
@@ -77,19 +85,19 @@ async function pullImage() {
 
 async function createContainer() {
   await stopContainer();
-  const dockerConfig = config.get("docker");
+  const dockerConfig = config.get("postgres_database");
   await pullImage();
   console.log(` == Creating Container Image == `);
   let pieces = [
     `docker run`,
-    dockerConfig.removeAfter ? `--rm` : ``, // remove afterwards
-    `--name ${dockerConfig.containerName}`, // container name
-    `-e POSTGRES_PASSWORD=${dockerConfig.dbPassword}`, // database password
-    `-e POSTGRES_USERNAME=${dockerConfig.dbUsername || "postgres"}`, // database password
-    `-e POSTGRES_DB=${dockerConfig.databaseName || "example"}`, // database password
-    dockerConfig.detachProcess ? `-d` : ``, // detach process
+    dockerConfig.remove_after ? `--rm` : ``, // remove afterwards
+    `--name ${dockerConfig.container_name}`, // container name
+    `-e POSTGRES_PASSWORD=${dockerConfig.password}`, // database password
+    `-e POSTGRES_USERNAME=${dockerConfig.username || "postgres"}`, // database password
+    `-e POSTGRES_DB=${dockerConfig.database_name || "example"}`, // database password
+    dockerConfig.detach_process ? `-d` : ``, // detach process
     `-p ${dockerConfig.port}:5432`, // port
-    `-v ${dockerConfig.volumeLocation}:/var/lib/postgresql/data`, //
+    `-v ${dockerConfig.volume_location}:/var/lib/postgresql/data`, //
     `postgres`
   ];
   let command = pieces.join(" ");
@@ -102,7 +110,8 @@ function runContainer() {}
 
 async function stopContainer() {
   console.log(" == Removing existing container == ");
-  let command = `docker container stop ${config.get("docker.containerName")}`;
+  let container_name = config.get("postgres_database.container_name");
+  let command = `docker container stop ${container_name}`;
   var stdout, stderr;
   try {
     var { stdout, stderr } = await exec(command);

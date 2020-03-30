@@ -1,0 +1,13 @@
+{
+  "postgres_database": {
+    "version": "12",
+    "volume_location": "~/.docker/volumes/crud-postgres",
+    "remove_after": true,
+    "container_name": "crud-postgres",
+    "username": "postgres",
+    "password": "1234567qwertyuiop",
+    "database_name": "example",
+    "port": "5432",
+    "detach_process": true
+  }
+}
