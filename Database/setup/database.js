@@ -1,6 +1,7 @@
 process.env.NODE_CONFIG_DIR = "../config";
 
 const config = require("config");
+const Common = require("../../Common");
 const child_process = require("child_process");
 const util = require("util");
 const fs = require("fs");
@@ -31,28 +32,19 @@ async function test() {
 function validate() {
   let hasProblem = false;
 
-  // Has All Required Configs //
-  let requiredConfigs = [
-    "postgres_database.version",
-    "postgres_database.volume_location",
-    "postgres_database.remove_after",
-    "postgres_database.container_name",
-    "postgres_database.username",
-    "postgres_database.password",
-    "postgres_database.database_name",
-    "postgres_database.port",
-    "postgres_database.detach_process"
-  ];
-  requiredConfigs.forEach(function (key) {
-    if (!config.has(key)) {
-      console.error(
-        `Please add ${key} to the config file at .../config/local.json`
-      );
-      hasProblem = true;
-    }
-  });
-
-  if (hasProblem) {
+  if (
+    !Common.CheckConfig([
+      "postgres_database.version",
+      "postgres_database.volume_location",
+      "postgres_database.remove_after",
+      "postgres_database.container_name",
+      "postgres_database.username",
+      "postgres_database.password",
+      "postgres_database.database_name",
+      "postgres_database.port",
+      "postgres_database.detach_process"
+    ])
+  ) {
     console.error(new Error("Exiting Because some configs are not present."));
     process.exit(1);
   }
