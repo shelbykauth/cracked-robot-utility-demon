@@ -12,8 +12,8 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "node ./index.js",
-    "start-dev": "nodemon ./index.js",
+    "start": "node ./src/index.js",
+    "start-dev": "nodemon ./src/index.js",
     "test": "./test/index.js"
   },
   "repository": {
