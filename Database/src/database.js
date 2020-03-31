@@ -42,7 +42,7 @@ function validate() {
       "postgres_database.password",
       "postgres_database.database_name",
       "postgres_database.port",
-      "postgres_database.detach_process"
+      "postgres_database.detach_process",
     ])
   ) {
     console.error(new Error("Exiting Because some configs are not present."));
@@ -90,7 +90,7 @@ async function createContainer() {
     dockerConfig.detach_process ? `-d` : ``, // detach process
     `-p ${dockerConfig.port}:5432`, // port
     `-v ${dockerConfig.volume_location}:/var/lib/postgresql/data`, //
-    `postgres`
+    `postgres`,
   ];
   let command = pieces.join(" ");
   let { stdout, stderr } = await exec(command);
@@ -121,5 +121,5 @@ module.exports = {
   test,
   createContainer,
   runContainer,
-  pullImage
+  pullImage,
 };

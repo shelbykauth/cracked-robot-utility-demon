@@ -22,5 +22,5 @@ function checkConfig(requiredConfigs) {
 }
 
 module.exports = {
-  checkConfig
+  checkConfig,
 };
