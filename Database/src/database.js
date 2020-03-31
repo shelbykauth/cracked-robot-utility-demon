@@ -5,7 +5,6 @@ const Common = require("../../Common/src");
 const child_process = require("child_process");
 const util = require("util");
 const fs = require("fs");
-const path = require("path");
 const exec = util.promisify(child_process.exec);
 
 validate();
@@ -51,6 +50,7 @@ function validate() {
 
   let volume_location = config.get("postgres_database.volume_location");
   if (fs.existsSync(volume_location)) {
+    // It is good!
   } else {
     console.log(
       `Config.postgres_database.volume_location is not valid.  Please correct in .../config/local.json.  Directory ${volume_location} does not exist`
@@ -104,10 +104,9 @@ async function stopContainer() {
   console.log(" == Removing existing container == ");
   let container_name = config.get("postgres_database.container_name");
   let command = `docker container stop ${container_name}`;
-  var stdout, stderr;
   try {
-    var { stdout, stderr } = await exec(command);
-    console.log(stdout);
+    let streams = await exec(command);
+    console.log(streams.stdout);
   } catch (err) {
     if (err.message.indexOf("No such container:") !== -1) {
       console.log("No such container");
