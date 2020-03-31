@@ -36,7 +36,7 @@
     "geckodriver": "^1.19.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "vue-template-compiler": "^2.6.11"
   }
 }
