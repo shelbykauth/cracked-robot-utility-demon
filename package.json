@@ -11,7 +11,8 @@
     "database-install": "npm install --prefix Database",
     "web-install": "npm install --prefix Web",
     "api-install": "npm install --prefix API",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js,.vue ./"
   },
   "repository": {
     "type": "git",
@@ -30,10 +31,14 @@
   },
   "homepage": "https://github.com/shelbykauth/cracked-robot-utility-demon#readme",
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.2.2",
     "husky": "^4.2.3",
     "prettier": "^2.0.2"
   },
   "dependencies": {
+    "babel-eslint": "^10.1.0",
     "config": "^3.3.1"
   }
 }
