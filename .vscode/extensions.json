@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "prettier.prettier-vscode",
+    "jcbuisson.vue",
+    "mishannn.vuex-suggest",
+    "octref.vetur",
+    "qiang014.vetur-e"
+  ]
+}
